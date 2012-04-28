@@ -3,7 +3,6 @@ Created on 28 Apr 2012
 
 @author: Carnage
 '''
-import sys
 from ..tvfs import tvfs
 from ..builder import builder
 from ..players.mpc import mpc
@@ -12,19 +11,19 @@ class cli:
     def __init__(self):
         self.tvfs = tvfs()
     
-    def run(self):
+    def run(self,argv):
         try:            
-            if sys.argv[1] == '/playnext':
-                self.playNext(sys.argv[2])
-            if sys.argv[1] == '/build':
-                self.build(sys.argv[2])
+            if argv[1] == '/playnext':
+                self.playNext(argv[2])
+            if argv[1] == '/build':
+                self.build(argv[2])
                 
         except IndexError:
             pass        
         
     def playNext(self, path):
         series = self.tvfs.loadXml(path)
-        progress = self.tvfs.loadProgressXml(path, series)
+        progress = self.tvfs.loadProgressXml(series)
         
         print series.name
         def playLoop():

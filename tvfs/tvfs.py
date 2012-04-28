@@ -11,6 +11,8 @@ from .containers.Progress import Progress
 import xml.dom.minidom as xml 
 
 class tvfs:
+    seriesInfo = {}
+    
     def findXml(self,directory,filename):
         if directory[-1] == '\\' or os.path.isfile(directory):
             #Cleanup path if it ends in a \\ or is a file.
