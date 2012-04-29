@@ -18,13 +18,10 @@ from tvfs.ui.cli import cli
 #        
 #except IndexError:
 #    pass
-argv = ['','','']
-argv[0] = ''
-argv[1] = '/playnext'
-argv[2] = 'F:\\media\\Simpsons'
+
 
 x = cli()
-x.run(argv)
+x.run(sys.argv)
 
 #x.saveXml()
 #x.playNext('F:\\media\\24\\')
