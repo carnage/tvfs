@@ -55,6 +55,14 @@ class builder:
                         else:
                             print 'unknown extention: ' + episode
     def build(self):
+        #two options; could be on a series dir or in a dir containing many series.
+        parentPath,series = os.path.split(self.directory)
+        for d in os.listdir(self.directory):  
+            if os.path.isdir(os.path.join(self.directory,d)) and self.seriesMatch.search(d):
+                self.seriesInfo[series] = Series(parentPath,series)
+                self.buildSeries(self.seriesInfo[series])    
+                return self.seriesInfo  
+        
         for series in os.listdir(self.directory):
             #detect if this is a series
             for d in os.listdir(os.path.join(self.directory,series)):  

@@ -7,6 +7,7 @@ Created on 28 Apr 2012
 import os
 from .containers.Series import Series
 from .containers.Progress import Progress
+from .builder import builder
 
 import xml.dom.minidom as xml 
 
@@ -30,7 +31,10 @@ class tvfs:
     def loadXml(self,directory):
         xmlfile = self.findXml(directory,'SeriesInfo.xml')
         if xmlfile == None:
-            return None#for now, need to build eventually
+            b = builder(directory)
+            self.seriesInfo = b.build()
+            self.saveXml()
+            return self.loadXml(directory)
         
         x = xml.parse(xmlfile)
         series = Series.fromXml(x.getElementsByTagName('series')[0]) 

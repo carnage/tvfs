@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\tvfs.play]
+@="Play next episode"
+
+[HKEY_CLASSES_ROOT\Directory\shell\tvfs.play\command]
+@="\"<PATH_TO_PYTHON>\\python.exe\" \"<PATH_TO_TVFS>\\driver.py\" /playnext \"%1\""
